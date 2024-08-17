@@ -10,16 +10,19 @@ public class GetBean {
     @Test
     public void testAll() throws ClassNotFoundException {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
-        getBeanByClassType(context);
+//        getBeanByClassType(context);
         getBeanById(context);
-        getBeanByClassType(context);
+//        getBeanByClassType(context);
     }
 
 
     public void getBeanById(ApplicationContext context){
-        User bean = (User)context.getBean("user");
-        bean.run();
-        System.out.println(bean);
+//        User bean = (User)context.getBean("userll");
+        User beanw = (User) context.getBean("user");
+//        bean.run();
+        beanw.run();
+//        System.out.println(bean);
+        System.out.println(beanw);
     }
 
     public void getBeanByClassType(ApplicationContext context) throws ClassNotFoundException {

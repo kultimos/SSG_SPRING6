@@ -3,7 +3,49 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="user" class="com.kul.model.User"></bean>
-    <bean id="userImplOne" class="com.kul.model.UserDaoImplOne"></bean>
-    <bean id="userImplTwo" class="com.kul.model.UserDaoImplTwo"></bean>
+    <bean id="user" class="com.kul.model.User">
+<!--        setter注入方式,需要类中有对应属性的set方法-->
+<!--        <property name="name" value="王迪"></property>  -->
+<!--        <property name="age" value="12"></property>-->
+
+<!--        构造器注入方式,需要类中有对应的构造器-->
+        <constructor-arg name="name" value="小乐" ></constructor-arg>
+        <constructor-arg name="age" value="1"></constructor-arg>
+        <constructor-arg name="role" ref="role"></constructor-arg>
+        <constructor-arg name="permission">
+                <array>
+                    <value type="java.lang.String">1</value>
+                    <value type="java.lang.String">水机</value>
+                </array>
+        </constructor-arg>
+        <constructor-arg name="fuck">
+            <list>
+                <ref bean="role"></ref>
+            </list>
+        </constructor-arg>
+        <constructor-arg name="nba">
+            <map>
+                <entry>
+                    <key>
+                        <value> 939</value>
+                    </key>
+                    <ref bean="role"></ref>
+                </entry>
+                <entry key="24" value-ref="role"> </entry>
+            </map>
+        </constructor-arg>
+
+    </bean>
+
+    <bean id="role" class="com.kul.model.Role">
+        <property name="name" value="superAdmin"></property>
+    </bean>
+
+<!--    // 通过不同的配置,代码中指定不同的id,即可生成不同的对象实例,无敌了这解耦-->
+<!--    <bean id="userll" class="com.kul.model.User">-->
+<!--        <constructor-arg name="name" value="是滴" ></constructor-arg>-->
+<!--        <constructor-arg name="age" value="99"></constructor-arg>-->
+<!--    </bean>-->
+<!--    <bean id="userImplOne" class="com.kul.model.UserDaoImplOne"></bean>-->
+<!--    <bean id="userImplTwo" class="com.kul.model.UserDaoImplTwo"></bean>-->
 </beans>
