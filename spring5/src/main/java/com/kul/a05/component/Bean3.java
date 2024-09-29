@@ -1,13 +1,8 @@
 package com.kul.a05.component;
 
-
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
-@Component
-public class Bean2 {
-
-
-    public Bean2( ) {
-
-    }
+@Controller
+public class Bean3 {
 }
