@@ -44,9 +44,6 @@ public class ComponentScanPostProcessor implements BeanFactoryPostProcessor {
                                 String beanName = generator.generateBeanName(bd, beanFactory);
                                 beanFactory.registerBeanDefinition(beanName, bd);
                             }
-
-
-
                         }
                     }
                 } catch (Exception e) {

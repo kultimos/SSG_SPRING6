@@ -2,6 +2,7 @@ package com.kul.a05;
 
 import com.alibaba.druid.pool.DruidDataSource;
 
+import com.kul.a05.component.Bean2;
 import org.mybatis.spring.SqlSessionFactoryBean;
 
 import org.springframework.context.annotation.Bean;
@@ -22,6 +23,10 @@ public class Config {
     }
 
 
+    public Bean2 bean2() {
+        return new Bean2();
+    }
+
 
     @Bean
     public SqlSessionFactoryBean sqlSessionFactoryBean(DataSource dataSource) {
@@ -38,4 +43,5 @@ public class Config {
         dataSource.setPassword("FHGKxz0ovdC");
         return dataSource;
     }
+
 }
