@@ -3,8 +3,12 @@ package com.kul.a05;
 import com.alibaba.druid.pool.DruidDataSource;
 
 import com.kul.a05.component.Bean2;
+import com.kul.a05.mapper.Mapper1;
+import com.kul.a05.mapper.Mapper2;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 
+import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -43,5 +47,4 @@ public class Config {
         dataSource.setPassword("FHGKxz0ovdC");
         return dataSource;
     }
-
 }

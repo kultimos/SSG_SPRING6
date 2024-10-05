@@ -29,8 +29,11 @@ public class AtBeanPostProcessor implements BeanFactoryPostProcessor {
                 System.out.println(method);
                 //属性解析: 可以获取该方法的Bean注解的属性信息,返回值是一个Map.key是属性名,value是属性值
                 Map<String, Object> annotationAttributes = method.getAnnotationAttributes(Bean.class.getName());
-                for (Map.Entry<String, Object> stringObjectEntry : annotationAttributes.entrySet()) {
-                    System.out.println(stringObjectEntry.getKey() + " : " + stringObjectEntry.getValue());
+//                for (Map.Entry<String, Object> stringObjectEntry : annotationAttributes.entrySet()) {
+//                    System.out.println(stringObjectEntry.getKey() + " : " + stringObjectEntry.getValue());
+//                }
+                if(annotationAttributes.containsKey("initMethod")) {
+                    System.out.println("initMethod:" + annotationAttributes.get("initMethod"));
                 }
                 BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition();
                 // 这里需要理解,@Configuration修饰的类,本质上相当于一个工厂对象;我们在config中定义的多个@Bean修饰的方法,实际上是一系列工厂方法

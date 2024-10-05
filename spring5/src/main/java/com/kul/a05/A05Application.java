@@ -86,6 +86,7 @@ public class A05Application {
         // 因为我们将后置处理器已经封装,所以这里我们只需要直接注册该后置处理器即可
         context.registerBean(ComponentScanPostProcessor.class);
         context.registerBean(AtBeanPostProcessor.class);
+        context.registerBean(MapperPostProcessor.class);
         context.refresh();
 
         for(String name: context.getBeanDefinitionNames()) {
