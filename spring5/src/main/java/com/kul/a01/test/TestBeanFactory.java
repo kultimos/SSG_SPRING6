@@ -53,7 +53,7 @@ public class TestBeanFactory {
     }
 
     // BeanFactoryPostProcessor是在Bean被实例化之前对Bean的定义信息进行补充和修改
-    // BeanPoostProcessor是在Bean实例化完成之后,对Bean进行增强,如AOP;
+    // BeanPostProcessor是在Bean实例化完成之后,对Bean进行增强,如AOP;
 
     @Configuration
     static class Config {
