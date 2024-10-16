@@ -12,4 +12,5 @@ public class Target {
     public void save(long i) throws Throwable {
         System.out.println("save(long)");
     }
+
 }
