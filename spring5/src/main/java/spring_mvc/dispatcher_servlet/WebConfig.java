@@ -1,8 +1,5 @@
-package dispatcher_servlet.a1;
+package spring_mvc.dispatcher_servlet;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcProperties;
@@ -13,6 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 @Configuration
 @ComponentScan
@@ -52,6 +51,22 @@ public class WebConfig {
         // 通过读取绑定了配置文件中信息的类的属性,实现通过配置文件对Servlert初始化时机的控制
         registrationBean.setLoadOnStartup(webMvcProperties.getServlet().getLoadOnStartup());
         return registrationBean;
+    }
+
+    /**
+     * 这里加这个bean是因为,如果spring中没有将requestMappingHandlerMapping加入bean,那实际上我们使用的调度器是来自于
+     * DispatcherServlet初始化时默认添加的组件,但该调度器不属于Spring容器的话,会给我测试带来困扰,所以这里我们手动将之注册
+     * 为bean
+     */
+    @Bean
+    public RequestMappingHandlerMapping requestMappingHandlerMapping() {
+        return new RequestMappingHandlerMapping();
+    }
+
+    // 加这个bean的理由同上
+    @Bean
+    public MyRequestMappingHandlerAdapter requestMappingHandlerAdapter() {
+        return new MyRequestMappingHandlerAdapter();
     }
 
 }
